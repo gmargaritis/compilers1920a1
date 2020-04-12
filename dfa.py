@@ -7,23 +7,16 @@
 """
 
 
-transitions = { 
-
-	# (Α) Συμπληρώστε τον πίνακα μεταβάσεων ως λεξικό (dictionary).
-	# Η αρχική κατάσταση πρέπει να ονομάζεται 's0'.
-	# Για λεπτομέρειες δείτε στο:
-	# http://mixstef.github.io/courses/compilers/lecturedoc/unit1/module1.html#id7
-
+transitions = {
+		's0' : {'DIGIT' : 's1', 'DOT' : 's2'},
+		's1' : {'DIGIT' : 's1', 'DOT' : 's3'},
+		's2' : {'DIGIT' : 's3'},
+	       	's3' : {'DIGIT' : 's3'}
      	      } 
 
 
 accepts = { 
-
-	# (Β) Συμπληρώστε το λεξικό των καταστάσεων αποδοχής και των
-	# αντίστοιχων επιστρεφόμενων συμβόλων (tokens)
-	# Για λεπτομέρειες δείτε στο:
-	# http://mixstef.github.io/courses/compilers/lecturedoc/unit1/module1.html#id8
-
+	    's3' : 'FLOAT_TOKEN'
      	  }
 
 
@@ -35,10 +28,10 @@ def get_char(text,pos):
 	
 	c = text[pos]
 	
-	# (Γ) Προαιρετικά, μπορείτε να ομαδοποιήσετε τους
-	# χαρακτήρες εισόδου εδώ.
-	# Για λεπτομέρειες δείτε στο:
-	# http://mixstef.github.io/courses/compilers/lecturedoc/unit1/module1.html#id11
+	if c >= '0' and c <= '9':
+		return 'DIGIT'
+	if c == '.':
+		return 'DOT'
 	
 	return c
 	
