@@ -11,13 +11,13 @@ transitions = {
 		's0' : {'DIGIT' : 's1', 'DOT' : 's2'},
 		's1' : {'DIGIT' : 's1', 'DOT' : 's3'},
 		's2' : {'DIGIT' : 's3'},
-	       	's3' : {'DIGIT' : 's3'}
+		's3' : {'DIGIT' : 's3'}
      	      } 
 
 
 accepts = { 
 	    's3' : 'FLOAT_TOKEN'
-     	  }
+          }
 
 
 def get_char(text,pos):
